@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: acr-demo03
+  name: acr-demo04
   labels:
-    app: acr-demo03
+    app: acr-demo04
 spec:
   replicas: 2
   selector:
     matchLabels: 
-     app: acr-demo03
+     app: acr-demo04
   template:
     metadata:
       labels:
-        app: acr-demo03
+        app: acr-demo04
     spec:
       containers:
-      - name: customaksnginxapp3
-        image: acrdemo03.azurecr.io/customaksnginxapp3
+      - name: acrdemo04
+        image: acrdemo04.azurecr.io/imagedemo04tagged
         ports:
           - containerPort: 80
         imagePullPolicy: Always
@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: acr-demo03-loadbalancer-service
+  name: acr-demo04-loadbalancer-service
   labels:
-    app: acr-demo03
+    app: acr-demo04
 spec: 
   selector:
-    app: acr-demo03
+    app: acr-demo04
   type: LoadBalancer
   ports:
     - port: 80
